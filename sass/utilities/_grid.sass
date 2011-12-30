@@ -1,0 +1,87 @@
+@import variables
+
+$grid_columns: 16
+$grid_column_width: 40px
+$grid_gutter_width: 20px
+$grid_extra_space: ($grid_gutter_width * 2)
+$site_width: ($grid_columns * $grid_column_width) + ($grid_gutter_width * ($grid_columns - 1))
+
+@function site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
+  @return ($grid_columns * $grid_column_width) + ($grid_gutter_width * ($grid_columns - 1))
+
+@mixin grid-column($column_span: 1)
+  display: inline
+  float: left
+  margin-left: $grid_gutter_width
+  width: ($grid_column_width * $column_span) + ($grid_gutter_width * ($column_span - 1))
+
+@mixin grid-offset($column_offset: 1)
+  margin-left: ($grid_column_width * $column_offset) + ($grid_gutter_width * ($column_offset - 1)) + $grid_extra_space
+
+@mixin grid-magic($size)
+  #wrapper
+    width: $size
+
+  .grid-row
+    margin-left: -1 * $grid_gutter_width
+
+  @for $i from 1 through $grid_columns
+    .span#{$i}
+      @include grid-column($i)
+
+  @for $i from 1 through $grid_columns
+    .offset#{$i}
+      @include grid-offset($i)
+
+// TODO: thirds of the grid
+
+@mixin grid-magic-small($size)
+  #wrapper
+    width: $size
+
+  .grid-row
+    margin-left: 0
+
+  @for $i from 1 through $grid_columns
+    .span#{$i}
+      display: inline
+      float: left
+      margin-left: 0
+      width: $size
+
+  @for $i from 1 through $grid_columns
+    .offset#{$i}
+      margin-left: 0
+
+$site_width: $media_mobile_portrait
+@include grid-magic-small($site_width)
+
+@media only screen and (min-width: $media_mobile_landscape)
+  $site_width: $media_mobile_landscape
+  @include grid-magic-small($site_width)
+
+@media only screen and (min-width: $media_tablet_portrait)
+  $site_width: $media_tablet_portrait
+  @include grid-magic-small($site_width)
+
+@media only screen and (min-width: $media_tablet_landscape)
+  $grid_column_width: 32px
+  $grid_gutter_width: 16px
+  $grid_extra_space: ($grid_gutter_width * 2)
+  $site_width: site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
+  @include grid-magic($site_width)
+
+@media only screen and (min-width: $media_netbook)
+  $grid_column_width: 40px
+  $grid_gutter_width: 20px
+  $grid_extra_space: ($grid_gutter_width * 2)
+  $site_width: site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
+  @include grid-magic($site_width)
+
+@media only screen and (min-width: $media_widescreen)
+  $grid_column_width: 56px
+  $grid_gutter_width: 28px
+  $grid_extra_space: ($grid_gutter_width * 2)
+  $site_width: site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
+  @include grid-magic($site_width)
+

@@ -1,0 +1,70 @@
+@import compass/css3
+@import compass/utilities
+@import compass/reset/utilities
+
+@import variables
+
+@function colored_text($bg_color, $amount: 70%, $cutoff: 50%)
+  @if lightness($bg_color) > $cutoff
+    @return darken($bg_color, $amount)
+  @else
+    @return lighten($bg_color, $amount)
+
+/*
+ * Full-colored boxes on a web page should not be using white/grey text colors.
+ * This is a nice trick to automatically provide complementary colors for 
+ * headings, normal, and muted text based on the background color.
+@mixin colored_box($bg_color)
+  background-color: $bg_color
+  color: colored_text($bg_color)
+
+  @for $i from 1 through 6
+    .h#{$i}
+      color: colored_text($bg_color, 90%)
+
+  // TODO: perhaps <small> isn't the right choice here for muted text?
+  small
+    color: colored_text($bg_color, 50%)
+
+// http://forrst.com/posts/Gradient_Horizontal_Rules-yZ4
+hr.fancy
+  // TODO: fix this
+  //@include background(#DDD, linear-gradient(left, rgb(255, 255, 255), rgb(187, 187, 187) 25%, rgb(187, 187, 187) 75%, rgb(255, 255, 255)))
+  border: 0
+  height: 1px
+
+.js .jsnotice
+  display: none
+
+.no-js .jsnotice
+  display: block
+
+@mixin centered($display: block)
+  display: $display
+  margin-left: auto
+  margin-right: auto
+
+// TODO: nice floated images with margin?
+
+/*
+ * These are convenient class mappings to mixins that are useful for Javascript
+ * to have access to, when dynamically modifying page elements during user
+ * interaction.
+
+.cf
+  @include pie-clearfix
+
+.hide
+  display: none
+
+.show
+  @include reset-display
+
+.pull-left
+  @include float-left
+
+.pull-right
+  @include float-right
+
+.muted
+  color: $muted_text_color

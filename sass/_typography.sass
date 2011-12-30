@@ -1,0 +1,188 @@
+@import compass/css3
+
+@import variables
+
+h1, h2, h3, h4, h5, h6
+  font-weight: bold
+  color: $header_text_color
+  text-rendering: optimizeLegibility
+
+  small
+    color: $muted_text_color
+
+h1, h2, h3, h4
+  small
+    font-size: 0.6em
+
+h1
+  font-size: 30px
+
+h2
+  font-size: 24px
+
+h3
+  font-size: 18px
+
+h4
+  font-size: 16px
+
+h5
+  font-size: 14px
+
+h6
+  font-size: 13px
+  text-transform: uppercase
+
+p
+  margin-bottom: 0.8em
+
+a
+  color: $link_blue
+  // j.mp/webkit-tap-highlight-color
+  -webkit-tap-highlight-color: #FF5E99
+
+  &:hover, &:active
+    outline: 0
+  &:visited
+    color: $link_blue_visited
+  &:hover
+    color: $link_blue_hover
+  &:focus
+    outline: thin dotted
+
+  &.img
+    border: none
+    text-decoration: none
+    img
+      vertical-align: baseline
+
+small
+  font-size: smaller
+
+strong, th
+  font-weight: bold
+
+/* Prevent sub and sup affecting line-height in all browsers
+sub, sup
+  font-size: 75%
+  line-height: 0
+  position: relative
+  vertical-align: baseline
+
+sup
+  top: -0.5em
+
+sub
+  bottom: -0.25em
+
+caption
+  font-style: italic
+
+q
+  &:before, &:after
+    content: '"'
+
+abbr, time
+  border-bottom: 1px dotted #999
+  cursor: help
+
+dl
+  padding: 1em
+
+dt
+  font-weight: bold
+
+dd
+  margin-bottom: 1em
+
+ul, ol
+  margin: 0 0 0.8em 1.5em
+
+ul ul, ul ol, ol ol, ol ul
+  margin-bottom: 0
+
+ul
+  list-style-type: disc
+
+ol
+  list-style-type: decimal
+
+ul.unstyled
+  list-style: none
+  margin-left: 0
+
+hr
+  margin: 20px 0 19px
+  border: 0
+  border-bottom: 1px solid $darker_grey
+
+pre, code, kbd, samp, tt, var
+  // TODO: abstract this out into a font @mixin
+  font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif
+
+/*
+ * Prevent horizontal scrollbars in pre blocks
+ *
+ * http://www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/
+pre
+  padding: 1px 3px
+  -moz-tab-size: 4
+  -o-tab-size: 4
+  tab-size: 4
+  // CSS2
+  white-space: pre
+  // Mozilla, but let's make this comment really, really, really, really, really, really long to prove our point
+  white-space: -moz-pre-wrap
+  // HP printers
+  white-space: -hp-pre-wrap
+  // Opera 7
+  white-space: -o-pre-wrap
+  // Opera 4-6
+  white-space: -pre-wrap
+  // CSS 2.1
+  white-space: pre-wrap
+  // IE
+  word-wrap: break-word
+
+// TODO: <code> snippets that are longer than the containing div are cut-off
+
+code, var, .codehilite
+  padding: 1px 3px
+  background-color: $lighter_grey
+  border: 1px solid $grey
+  @include border-radius(3px)
+  font-style: normal
+  word-wrap: break-word
+
+pre code
+  background-color: transparent
+  border: none
+  @include border-radius(none)
+
+blockquote
+  margin: 0 0 20px
+  padding: 9px 20px 9px 30px
+  border-top: 1px solid $grey
+  border-bottom: 1px solid $grey
+  background: transparent url(/static/images/open-quote.png) no-repeat 0 0
+  font-style: italic
+  font-size: 1.1em
+
+  p
+    margin-bottom: 5px
+
+  cite, small
+    display: block
+    font-size: 0.9em
+    color: $muted_text_color
+    &:before
+      content: '\2014 \00A0'
+
+/*
+ * These selection declarations have to be separate.
+ * No text-shadow: twitter.com/miketaylr/status/12228805301
+
+::-moz-selection, ::selection
+  background: #3399ff
+  color: #fff
+  text-shadow: none
