@@ -1,13 +1,14 @@
+@import compass/utilities
+
 @import variables
 
-$grid_columns: 16
-$grid_column_width: 40px
+$grid_columns: 12
+$grid_column_width: 60px
 $grid_gutter_width: 20px
 $grid_extra_space: ($grid_gutter_width * 2)
-$site_width: ($grid_columns * $grid_column_width) + ($grid_gutter_width * ($grid_columns - 1))
 
 @function site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
-  @return ($grid_columns * $grid_column_width) + ($grid_gutter_width * ($grid_columns - 1))
+  @return ($grid_columns * $grid_column_width) + ($grid_gutter_width * $grid_columns)
 
 @mixin grid-column($column_span: 1)
   display: inline
@@ -18,12 +19,15 @@ $site_width: ($grid_columns * $grid_column_width) + ($grid_gutter_width * ($grid
 @mixin grid-offset($column_offset: 1)
   margin-left: ($grid_column_width * $column_offset) + ($grid_gutter_width * ($column_offset - 1)) + $grid_extra_space
 
+.grid-row
+  @include pie-clearfix
+
 @mixin grid-magic($size)
   #wrapper
     width: $size
 
   .grid-row
-    margin-left: -1 * $grid_gutter_width
+    margin-left: -1 * ($grid_gutter_width / 2)
 
   @for $i from 1 through $grid_columns
     .span#{$i}
@@ -53,34 +57,36 @@ $site_width: ($grid_columns * $grid_column_width) + ($grid_gutter_width * ($grid
     .offset#{$i}
       margin-left: 0
 
-$site_width: $media_mobile_portrait
+.show-grid
+  margin-top: 10px
+
+.show-grid [class*='span']
+  background-color: $light_grey
+  text-align: center
+  min-height: 30px
+  line-height: 30px
+
+$site_width: $media_mobile_portrait - 20px
 @include grid-magic-small($site_width)
 
-@media only screen and (min-width: $media_mobile_landscape)
-  $site_width: $media_mobile_landscape
+@media only screen and (min-width: 480px)
+  $site_width: $media_mobile_landscape - 60px
   @include grid-magic-small($site_width)
 
-@media only screen and (min-width: $media_tablet_portrait)
-  $site_width: $media_tablet_portrait
+@media only screen and (min-width: 768px)
+  $site_width: $media_tablet_portrait - 60px
   @include grid-magic-small($site_width)
 
-@media only screen and (min-width: $media_tablet_landscape)
-  $grid_column_width: 32px
-  $grid_gutter_width: 16px
-  $grid_extra_space: ($grid_gutter_width * 2)
-  $site_width: site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
-  @include grid-magic($site_width)
-
-@media only screen and (min-width: $media_netbook)
-  $grid_column_width: 40px
+@media only screen and (min-width: 960px)
+  $grid_column_width: 60px
   $grid_gutter_width: 20px
   $grid_extra_space: ($grid_gutter_width * 2)
   $site_width: site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
   @include grid-magic($site_width)
 
-@media only screen and (min-width: $media_widescreen)
-  $grid_column_width: 56px
-  $grid_gutter_width: 28px
+@media only screen and (min-width: 1280px)
+  $grid_column_width: 72px
+  $grid_gutter_width: 23px
   $grid_extra_space: ($grid_gutter_width * 2)
   $site_width: site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
   @include grid-magic($site_width)

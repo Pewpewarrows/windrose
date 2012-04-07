@@ -34,14 +34,12 @@ $base_line_height: 1.5
 $base_header_line_height: 1.1
 
 // Media query minimum widths
+// TODO: these can't be used as part of an @media line until SASS 3.2
+// For now, copy/pasting from here (ugly)
 
 $media_mobile_portrait: 320px
-// mobile landscape necessary?
-$media_mobile_landscape: 400px
-$media_tablet_portrait: 480px
-// 600 in here somewhere?
-$media_tablet_landscape: 768px
-// 1024 instead? (used to be 960 for reference)
-$media_netbook: 992px
-// 1382/1280 instead?
-$media_widescreen: 1300px
+$media_mobile_landscape: 480px
+$media_tablet_portrait: 768px
+// This also could technically be media_tablet_landscape:
+$media_netbook: 960px
+$media_widescreen: 1280px
