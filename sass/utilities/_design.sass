@@ -10,10 +10,9 @@
   @else
     @return lighten($bg_color, $amount)
 
-/*
- * Full-colored boxes on a web page should not be using white/grey text colors.
- * This is a nice trick to automatically provide complementary colors for 
- * headings, normal, and muted text based on the background color.
+// Full-colored boxes on a web page should not be using white/grey text colors.
+// This is a nice trick to automatically provide complementary colors for 
+// headings, normal, and muted text based on the background color.
 @mixin colored_box($bg_color)
   background-color: $bg_color
   color: colored_text($bg_color)
@@ -44,15 +43,9 @@ hr.fancy
   margin-left: auto
   margin-right: auto
 
-// TODO: nice floated images with margin?
-
-/*
- * These are convenient class mappings to mixins that are useful for Javascript
- * to have access to, when dynamically modifying page elements during user
- * interaction.
-
-.cf
-  @include pie-clearfix
+// These are convenient class mappings to mixins that are useful for Javascript
+// to have access to, when dynamically modifying page elements during user
+// interaction.
 
 .hide
   display: none
@@ -60,11 +53,5 @@ hr.fancy
 .show
   display: block
 
-.pull-left
-  @include float-left
-
-.pull-right
-  @include float-right
-
 .muted
-  color: $muted_text_color
+  color: $mutedTextColor

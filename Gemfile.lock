@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/vwall/compass-twitter-bootstrap.git
+  revision: 1a7b5ce54efaf764eb317127521f7630964a3da7
+  specs:
+    compass_twitter_bootstrap (2.0.1.2)
+      compass
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -14,4 +21,5 @@ PLATFORMS
 
 DEPENDENCIES
   compass (= 0.12.1)
+  compass_twitter_bootstrap!
   sass (= 3.1.15)

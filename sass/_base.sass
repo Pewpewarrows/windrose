@@ -19,13 +19,16 @@
 // original rule for readability, except in special circumstances such as the
 // best-practices "print" block from HTML5BP.
 //
-// Assumes that a #wrapper div is inside the <body>, functioning as the site
-// container.
+// Assumes that a .container div is inside the <body>, functioning as the site
+// wrapper.
 
-// TODO: Reset vs Normalize
-@import compass/reset
+@import bootstrap_custom
+
 @import compass
-@import compass/layout
+// TODO: use the awesome font alternative?
+@import compass_twitter_bootstrap
+@import compass_twitter_bootstrap_responsive
+//@import compass/layout
 
 @import variables
 @import utilities

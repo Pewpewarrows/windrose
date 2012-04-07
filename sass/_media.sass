@@ -7,7 +7,7 @@
     text-shadow: none !important
     filter: none !important
     -ms-filter: none !important
-  /* Black prints faster: sanbeiji.com/archives/953
+  // Black prints faster: sanbeiji.com/archives/953
   a
     color: #444 !important
     text-decoration: underline
@@ -23,13 +23,13 @@
   a
     &[href^="javascript:"]:after, &[href^="#"]:after
       content: ""
-  /* Don't show links for images, or javascript/internal links
+  // Don't show links for images, or javascript/internal links
   pre, blockquote
     border: 1px solid #999
     page-break-inside: avoid
   thead
     display: table-header-group
-  /* css-discuss.incutio.com/wiki/Printing_Tables
+  // css-discuss.incutio.com/wiki/Printing_Tables
   tr
     page-break-inside: avoid
   img
@@ -46,19 +46,19 @@
 
 // Media Query Reference...
 
-/* Mobile Landscape
-@media only screen and (min-width: $media_mobile_landscape)
+// Mobile Landscape
+@media only screen and (min-width: $mediaMobileLandscape)
 
-/* Tablet Portrait
-@media only screen and (min-width: $media_tablet_portrait)
+// Tablet Portrait
+@media only screen and (min-width: $mediaTabletPortrait)
 
-/* Average-sized computer monitor
-@media only screen and (min-width: $media_netbook)
+// Average-sized computer monitor
+@media only screen and (min-width: $mediaNetbook)
 
-/* Widescreen monitors
-@media only screen and (min-width: $media_widescreen)
+// Widescreen monitors
+@media only screen and (min-width: $mediaWidescreen)
 
-/* iPhone 4, Opera Mobile 11 and other high pixel ratio devices
+// iPhone 4, Opera Mobile 11 and other high pixel ratio devices
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5)
 
 @media tv

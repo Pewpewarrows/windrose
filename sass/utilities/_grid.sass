@@ -1,93 +1,25 @@
-@import compass/utilities
-
-@import variables
-
-$grid_columns: 12
-$grid_column_width: 60px
-$grid_gutter_width: 20px
-$grid_extra_space: ($grid_gutter_width * 2)
-
-@function site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
-  @return ($grid_columns * $grid_column_width) + ($grid_gutter_width * $grid_columns)
-
-@mixin grid-column($column_span: 1)
-  display: inline
-  float: left
-  margin-left: $grid_gutter_width
-  width: ($grid_column_width * $column_span) + ($grid_gutter_width * ($column_span - 1))
-
-@mixin grid-offset($column_offset: 1)
-  margin-left: ($grid_column_width * $column_offset) + ($grid_gutter_width * ($column_offset - 1)) + $grid_extra_space
-
-.grid-row
-  @include pie-clearfix
-
-@mixin grid-magic($size)
-  #wrapper
-    width: $size
-
-  .grid-row
-    margin-left: -1 * ($grid_gutter_width / 2)
-
-  @for $i from 1 through $grid_columns
-    .span#{$i}
-      @include grid-column($i)
-
-  @for $i from 1 through $grid_columns
-    .offset#{$i}
-      @include grid-offset($i)
-
-// TODO: thirds of the grid
-
-@mixin grid-magic-small($size)
-  #wrapper
-    width: $size
-
-  .grid-row
-    margin-left: 0
-
-  @for $i from 1 through $grid_columns
-    .span#{$i}
-      display: inline
-      float: left
-      margin-left: 0
-      width: $size
-
-  @for $i from 1 through $grid_columns
-    .offset#{$i}
-      margin-left: 0
-
 .show-grid
   margin-top: 10px
+  margin-bottom: 20px
 
-.show-grid [class*='span']
-  background-color: $light_grey
+.show-grid [class*="span"]
+  background-color: #eee
   text-align: center
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  border-radius: 3px
   min-height: 30px
   line-height: 30px
 
-$site_width: $media_mobile_portrait - 20px
-@include grid-magic-small($site_width)
+.show-grid:hover [class*="span"]
+  background: #ddd
 
-@media only screen and (min-width: 480px)
-  $site_width: $media_mobile_landscape - 60px
-  @include grid-magic-small($site_width)
+.show-grid .show-grid
+  margin-top: 0
+  margin-bottom: 0
 
-@media only screen and (min-width: 768px)
-  $site_width: $media_tablet_portrait - 60px
-  @include grid-magic-small($site_width)
+.show-grid .show-grid [class*="span"]
+  background-color: #ccc
 
-@media only screen and (min-width: 960px)
-  $grid_column_width: 60px
-  $grid_gutter_width: 20px
-  $grid_extra_space: ($grid_gutter_width * 2)
-  $site_width: site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
-  @include grid-magic($site_width)
-
-@media only screen and (min-width: 1280px)
-  $grid_column_width: 72px
-  $grid_gutter_width: 23px
-  $grid_extra_space: ($grid_gutter_width * 2)
-  $site_width: site_width_from_grid($grid_columns, $grid_column_width, $grid_gutter_width)
-  @include grid-magic($site_width)
+// TODO: @media query for < $mediaMobilePortrait, stripped of all fancy styles
 
